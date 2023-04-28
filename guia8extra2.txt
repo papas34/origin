@@ -1,0 +1,33 @@
+SERVICIO
+--------------------------------------------------------
+ Scanner scr = new Scanner(System.in);
+    
+    char[] letras = {'T','R','W','A','G','M','Y','F','P','D','X','B','N','J','Z','S','Q','V','H','L','C','K','E'};
+    
+    public NIF crearNIF() {
+        System.out.println("A continuacion ingrese su DNI: ");
+        long DNI = scr.nextLong();
+        
+        long rest = DNI % 23;
+        char letra = letras[(int) rest];
+        
+        return new NIF(DNI, letra);
+    }
+    
+    public void mostrar(NIF r) {
+        System.out.println(" <Digito Verificador> "+ r.getDNI()+"-"+r.getLetra());
+    }
+}
+-----------------------------------------------------------------------
+
+MAIN
+------------------------------------------------------------------------
+public static void main(String[] args) {
+        NIFServicio sv = new NIFServicio();
+        NIF nif = sv.crearNIF();
+        sv.mostrar(nif);
+    
+    }
+}
+
+
